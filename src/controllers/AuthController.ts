@@ -20,7 +20,7 @@ class AuthController {
             user.username = username;
             user.email = email;
             user.password = password;
-            
+
             try {
                 user = await User.save(user);
                 const token = jwt.sign({ id: user.id, email: user.email }, config.jwtSecret);
