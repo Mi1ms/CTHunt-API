@@ -9,7 +9,7 @@
     "test": "yarn tsc",
     "clean": "yarn rimraf .dist",
     "build": "yarn clean && yarn babel src/ --out-dir .dist --extensions .ts --quiet",
-    "start": "yarn build && node .dist",
+    "start": "yarn build && node .dist/main.js",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run",
     "migration:create": "ts-node ./node_modules/typeorm/cli.js migration:create -n ",
     "migration:generate": "ts-node ./node_modules/typeorm/cli.js migration:generate -n ",
