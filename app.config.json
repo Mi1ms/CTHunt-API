@@ -1,7 +1,7 @@
 {
   "name": "CThunt-api",
   "env": [
-    "DATABASE_URI",
+    "DATABASE_URL",
     "HOST",
     "PORT"
   ]

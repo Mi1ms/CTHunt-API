@@ -1,5 +1,5 @@
 const DEFAULT_DB_URI = 'postgres://user:pwd@localhost:5432/db';
-const founded = (process.env.DATABASE_URI || DEFAULT_DB_URI).match(
+const founded = (process.env.DATABASE_URL || DEFAULT_DB_URI).match(
     /^(postgres):\/\/(.*):(.*)@(.*):(\d+)\/(.*)$/,
 );
 

@@ -11,12 +11,13 @@ type TokenType = {
 
 class AuthController {
     static async register(req: Request, res: Response): Promise<Response> {
-        const fields: string[] = ['nickname', 'email', 'password'];
+        const fields: string[] = ['username', 'email', 'password'];
         const missingValues = fields.filter(key => !(key in req.body));
         if (missingValues.length === 0) {
-            const { email, password }: User = req.body;
+            const { username, email, password }: User = req.body;
             if (!validateEmail(email)) return res.status(400).send('Invalid email provided');
             let user: User = new User();
+            user.username = username;
             user.email = email;
             user.password = password;
             try {

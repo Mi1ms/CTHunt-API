@@ -18,13 +18,13 @@ export default class Database {
     public async authenticate(): Promise<Connection | never> {
         dotenv.config();
 
-        if (!process.env.DATABASE_URI) throw new Error('Please check your DATABASE_URI value');
+        if (!process.env.DATABASE_URL) throw new Error('Please check your DATABASE_URL value');
 
-        const founded = (process.env.DATABASE_URI as string).match(
+        const founded = (process.env.DATABASE_URL as string).match(
             /^(postgres):\/\/(.*):(.*)@(.*):(\d+)\/(.*)$/,
         );
         if (!founded) {
-            throw new Error('Please check your DATABASE_URI value');
+            throw new Error('Please check your DATABASE_URL value');
         }
 
         this._connection = await createConnection();
