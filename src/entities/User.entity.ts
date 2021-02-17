@@ -28,9 +28,6 @@ export class User extends BaseEntity {
     @Length(4, 100)
     password!: string;
 
-    @Column({ default: false })
-    confirmed!: boolean;    
-
     @Column()
     @CreateDateColumn()
     @IsDate()

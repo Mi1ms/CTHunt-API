@@ -7,10 +7,7 @@ import Server from './Server';
 const main = async () => {
     try {
         dotenv.config();
-        if(!process.env.NODE_ENV)
-            prelude();
-       
-            
+        if (!process.env.NODE_ENV) prelude();
 
         const port = parseInt(process.env.PORT || '4242', 10);
         const host = process.env.HOST || '0.0.0.0';

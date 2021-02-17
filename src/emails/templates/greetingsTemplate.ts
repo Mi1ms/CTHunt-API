@@ -1,6 +1,6 @@
 import mjml2html from 'mjml';
 
-function passwordResetTemplate({ nickname }: { nickname: string }): string {
+function passwordResetTemplate(): string {
     const htmlOutput = mjml2html(
         `
       <mjml>
@@ -9,10 +9,10 @@ function passwordResetTemplate({ nickname }: { nickname: string }): string {
             <mj-column>
               <mj-divider border-color="#5EA898"></mj-divider>
               <mj-text font-size="24px" font-weight="bold" color="#5EA898" font-family="helvetica">
-                Hello ${nickname}!
+                Hello !
               </mj-text>
               <mj-text font-size="20px" color="#5EA898" font-family="helvetica">
-                Your password has been successfully changed
+                Welcom to CTHunt
               </mj-text>
               <mj-divider border-color="#5EA898"></mj-divider>
             </mj-column>
