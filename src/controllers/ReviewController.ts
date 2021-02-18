@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { Review } from '../entities/Review.entity';
+import { User } from '../entities/User.entity';
 
 type ResError = {
     status: number;
@@ -12,11 +13,12 @@ export default class ReviewController {
         const missingValues = fields.filter(key => !(key in req.body));
 
         if (missingValues.length === 0) {
-            const { player, mission, comment, rating }: Review = req.body;
+            const { quest, comment, rating }: Review = req.body;
+            const { user } = req;
             const notice: Review = new Review();
 
-            notice.player = player;
-            notice.mission = mission;
+            notice.user = user as User;
+            notice.quest = quest;
             notice.comment = comment;
             notice.rating = rating;
 
