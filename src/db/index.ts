@@ -1,4 +1,3 @@
-import dotenv from 'dotenv';
 import { createConnection, Connection } from 'typeorm';
 import { DATABASE_URL } from '../helpers/params';
 

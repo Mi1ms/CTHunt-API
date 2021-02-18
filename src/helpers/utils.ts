@@ -23,7 +23,7 @@ function prelude(): void | never {
 
     if (existsSync(envPathName)) {
         dotenv.config();
-      
+
         const missingValues = appConfig.env.filter((key: string) => process.env[key] === undefined);
         if (!isEmpty(missingValues)) {
             throw new Error(

@@ -1,12 +1,7 @@
-import {
-    BaseEntity,
-    Entity,
-    Column,
-} from 'typeorm';
+import { BaseEntity, Entity, Column } from 'typeorm';
 
 @Entity()
 export class Notice extends BaseEntity {
-
     @Column()
     player!: number;
 
@@ -17,6 +12,5 @@ export class Notice extends BaseEntity {
     comment!: string;
 
     @Column()
-    rating!: number;    
-
+    rating!: number;
 }
