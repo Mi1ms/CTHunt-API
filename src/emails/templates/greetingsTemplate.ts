@@ -12,7 +12,7 @@ function passwordResetTemplate(): string {
                 Hello !
               </mj-text>
               <mj-text font-size="20px" color="#5EA898" font-family="helvetica">
-                Welcom to CTHunt
+                Welcome to CTHunt
               </mj-text>
               <mj-divider border-color="#5EA898"></mj-divider>
             </mj-column>

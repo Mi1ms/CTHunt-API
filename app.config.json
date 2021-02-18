@@ -2,7 +2,6 @@
   "name": "CThunt-api",
   "env": [
     "DATABASE_URL",
-    "HOST",
-    "PORT"
+    "SENDGRID_API_KEY"
   ]
 }

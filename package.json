@@ -53,7 +53,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@sendgrid/mail": "^7.2.1",
+    "@sendgrid/mail": "^7.4.2",
     "@sentry/node": "5.19.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -68,7 +68,6 @@
     "lodash": "^4.17.20",
     "mjml": "^4.6.3",
     "moment": "^2.24.0",
-    "nodemailer": "^6.4.18",
     "nodemon": "^2.0.2",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",

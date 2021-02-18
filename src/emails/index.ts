@@ -1,34 +1,32 @@
-import nodemailer from 'nodemailer';
 import greetingsTemplate from './templates/greetingsTemplate';
-
+import sgMail from '@sendgrid/mail';
+import { SENDGRID_API_KEY } from '../helpers/params';
 export async function send(to: string, subject: string, body: string): Promise<boolean> {
-    const transporter = nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
-
-        port: 587,
-        auth: {
-            user: 'camila.hermiston@ethereal.email',
-            pass: 'yecY7UZwDB2epkZykz',
-        },
-    });
+    const msg = {
+        to,
+        from: 'rachidbensaid01@gmail.com',
+        subject,
+        html: body,
+    };
 
     try {
-        await transporter.sendMail({
-            to,
-            subject,
-            html: body,
-        });
-        return Promise.resolve(true);
+        if (SENDGRID_API_KEY) {
+            sgMail.setApiKey(SENDGRID_API_KEY);
+            await sgMail.send(msg);
+            return true;
+        }
+        return false;
     } catch (error) {
+        console.log(error);
         if (error.response) {
             console.error(error.response.body);
         }
-        return Promise.reject(error);
+        return false;
     }
 }
 
 export async function greetings(to: string): Promise<boolean> {
-    return send(to, 'Reset your password', greetingsTemplate());
+    return send(to, 'CTHunt: Greetings!', greetingsTemplate());
 }
 
 export default {

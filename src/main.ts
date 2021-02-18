@@ -1,18 +1,14 @@
 import 'reflect-metadata';
-import dotenv from 'dotenv';
 import { error } from './helpers/log';
 import { prelude } from './helpers/utils';
 import Server from './Server';
+import { NODE_ENV, PORT, HOST } from './helpers/params';
 
-const main = async () => {
+const main = async (): Promise<void> => {
     try {
-        dotenv.config();
-        if (!process.env.NODE_ENV) prelude();
+        if (!NODE_ENV) prelude();
 
-        const port = parseInt(process.env.PORT || '4242', 10);
-        const host = process.env.HOST || '0.0.0.0';
-
-        const server = new Server(host, port);
+        const server = new Server(HOST, PORT);
         await server.run();
     } catch (err) {
         error(err.message);

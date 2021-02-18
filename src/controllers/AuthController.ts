@@ -19,7 +19,8 @@ class AuthController {
             try {
                 user = await User.save(user);
                 const token = jwt.sign({ id: user.id, email: user.email }, config.jwtSecret);
-                await emails.greetings(user.email);
+                const emailStatus = await emails.greetings(user.email);
+                if (!emailStatus) return res.status(502).send('Email not send');
                 return res.status(200).send({
                     token,
                     data: user,
