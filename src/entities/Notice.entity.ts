@@ -1,12 +1,16 @@
-import { BaseEntity, Entity, Column } from 'typeorm';
+import { BaseEntity, Entity, Column, ManyToOne, OneToMany } from 'typeorm';
+import { Quest } from './Quest.entity';
+import { User } from './User.entity';
 
 @Entity()
 export class Notice extends BaseEntity {
+    @ManyToOne(() => User, (user: User) => user.id)
     @Column()
-    player!: number;
+    player!: User;
 
+    @OneToMany(() => Quest, (quest: Quest) => quest.idQuest)
     @Column()
-    mission!: number;
+    mission!: Quest;
 
     @Column()
     comment!: string;

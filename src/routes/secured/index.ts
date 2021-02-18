@@ -1,9 +1,11 @@
 import { Router } from 'express';
 import users from './users';
-import notice from './notice';
+import notices from './notices';
+import quests from './quests';
 
 const routes = Router();
 routes.use('/users', users);
-routes.use('/comment', notice);
+routes.use('/comments', notices);
+routes.use('/quests', quests);
 
 export default routes;
