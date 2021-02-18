@@ -1,19 +1,19 @@
 import { Request, Response } from 'express';
-import { Notice } from './../entities/Notice.entity';
+import { Review } from '../entities/Review.entity';
 
 type ResError = {
     status: number;
     message: string;
 };
 
-export default class NoticeController {
+export default class ReviewController {
     static async save(req: Request, res: Response): Promise<Response> {
         const fields: string[] = ['player', 'mission', 'comment', 'rating'];
         const missingValues = fields.filter(key => !(key in req.body));
 
         if (missingValues.length === 0) {
-            const { player, mission, comment, rating }: Notice = req.body;
-            const notice: Notice = new Notice();
+            const { player, mission, comment, rating }: Review = req.body;
+            const notice: Review = new Review();
 
             notice.player = player;
             notice.mission = mission;
@@ -21,7 +21,7 @@ export default class NoticeController {
             notice.rating = rating;
 
             try {
-                await Notice.save(notice);
+                await Review.save(notice);
                 return res.status(200).send(`Commented successfully`);
             } catch (error) {
                 const { status, message } = error as ResError;

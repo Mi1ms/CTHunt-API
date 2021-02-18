@@ -1,20 +1,27 @@
-import { BaseEntity, Entity, Column, JoinColumn, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import {
+    BaseEntity,
+    Entity,
+    Column,
+    CreateDateColumn,
+    UpdateDateColumn,
+    PrimaryGeneratedColumn,
+    ManyToOne,
+    OneToMany,
+} from 'typeorm';
+import { IsDate } from 'class-validator';
 import { User } from './User.entity';
+import { Review } from './Review.entity';
 
 enum Level {
-    Easy = 'easy',
-    Medium = 'medium',
-    Hard = 'Hard',
+    Easy = 'EASY',
+    Medium = 'MEDIUM',
+    Hard = 'HARD',
 }
 
 @Entity()
 export class Quest extends BaseEntity {
     @PrimaryGeneratedColumn()
-    idQuest!: string;
-
-    @ManyToOne(() => User, (user: User) => user.id)
-    @JoinColumn()
-    creator!: User;
+    id!: string;
 
     @Column()
     title!: string;
@@ -22,18 +29,37 @@ export class Quest extends BaseEntity {
     @Column()
     description!: string;
 
-    @Column()
+    @Column({
+        type: 'enum',
+        enum: Level,
+    })
     level!: Level;
 
-    @Column()
-    latittude!: number;
+    @Column({ type: 'float' })
+    latitude!: number;
 
-    @Column()
+    @Column({ type: 'float' })
     longitude!: number;
 
     @Column()
     solution!: string;
 
+    @Column({ nullable: true })
+    tip!: string;
+
+    @ManyToOne(() => User, user => user.quests)
+    user!: User;
+
+    @OneToMany(() => Review, (review: Review) => review.quest)
+    reviews!: Review[];
+
     @Column()
-    tips!: string;
+    @CreateDateColumn()
+    @IsDate()
+    createdAt!: Date;
+
+    @Column()
+    @UpdateDateColumn()
+    @IsDate()
+    updatedAt!: Date;
 }

@@ -1,3 +1,4 @@
+import { Quest } from './Quest.entity';
 import {
     BaseEntity,
     Entity,
@@ -8,9 +9,11 @@ import {
     UpdateDateColumn,
     BeforeInsert,
     BeforeUpdate,
+    OneToMany,
 } from 'typeorm';
 import { Length, IsDate } from 'class-validator';
 import { hashSync, compareSync, genSaltSync } from 'bcryptjs';
+import { Review } from './Review.entity';
 
 @Entity()
 @Unique(['email'])
@@ -27,6 +30,12 @@ export class User extends BaseEntity {
     @Column({ select: false })
     @Length(4, 100)
     password!: string;
+
+    @OneToMany(() => Quest, (quest: Quest) => quest.user)
+    quests!: Quest[];
+
+    @OneToMany(() => Review, (review: Review) => review.user)
+    reviews!: Review[];
 
     @Column()
     @CreateDateColumn()

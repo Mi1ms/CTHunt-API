@@ -6,7 +6,6 @@ async function uploadToAwsBucket({
     name,
     type,
     domain,
-    ACL = 'public',
 }: {
     file: Buffer;
     name: string;
@@ -26,7 +25,7 @@ async function uploadToAwsBucket({
         Key: name,
         ContentType: type,
         Body: file,
-        ACL: ACL,
+        ACL: 'public-read',
     };
 
     return s3.upload(params).promise();
