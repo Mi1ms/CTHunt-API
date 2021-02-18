@@ -1,11 +1,5 @@
 import aws from 'aws-sdk';
-import {
-    AWS_ACCESS_KEY_ID,
-    AWS_SECRET_ACCESS_KEY,
-    AWS_ASSETS_FOLDER,
-    AWS_ASSETS_BUCKET,
-    AWS_REGION,
-} from './params';
+import { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_ASSETS_BUCKET, AWS_REGION } from './params';
 
 async function uploadToAwsBucket({
     file,
@@ -28,7 +22,7 @@ async function uploadToAwsBucket({
 
     // eslint-disable-next-line
     const params = {
-        Bucket: `${AWS_ASSETS_BUCKET}/${AWS_ASSETS_FOLDER}/${domain}`,
+        Bucket: `${AWS_ASSETS_BUCKET}/${domain}`,
         Key: name,
         ContentType: type,
         Body: file,

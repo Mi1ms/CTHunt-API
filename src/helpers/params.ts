@@ -7,7 +7,6 @@ export const DATABASE_URL = process.env.DATABASE_URL;
 export const {
     AWS_ACCESS_KEY_ID,
     AWS_SECRET_ACCESS_KEY,
-    AWS_ASSETS_FOLDER,
     AWS_ASSETS_BUCKET,
     AWS_REGION,
 } = process.env;
@@ -16,6 +15,10 @@ export const HOST = process.env.HOST || '0.0.0.0';
 export default {
     NODE_ENV,
     SENDGRID_API_KEY,
+    AWS_ACCESS_KEY_ID,
+    AWS_SECRET_ACCESS_KEY,
+    AWS_ASSETS_BUCKET,
+    AWS_REGION,
     PORT,
     HOST,
     DATABASE_URL,
