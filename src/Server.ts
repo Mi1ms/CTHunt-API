@@ -32,8 +32,7 @@ export default class Server {
         this._app = express();
         this._app.use(cors());
         this._app.use(helmet());
-        this._app.use(bodyParser.json());
-        this._app.use(bodyParser.urlencoded({ extended: true }));
+        this._app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
         this._app.use(passport.initialize());
         this._app.use('/', routes);
     }
