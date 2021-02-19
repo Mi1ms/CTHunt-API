@@ -25,7 +25,19 @@ export default class Database {
             throw new Error('Please check your DATABASE_URL value');
         }
 
-        this._connection = await createConnection();
+        // console.table(founded[]);
+        const [, type, username, password, host, port, database] = founded;
+        this._connection = await createConnection({
+            type: type as any,
+            host,
+            port: parseInt(port, 10),
+            username,
+            password,
+            database,
+            synchronize: true,
+            logging: false,
+            ssl: { rejectUnauthorized: false },
+        });
         return this._connection;
     }
 }
